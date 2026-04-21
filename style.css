@@ -589,26 +589,65 @@ body {
   border-color: var(--pink);
 }
 
-/* Destinations */
+/* ========== DESTINATIONS SECTION STYLES ========== */
 .destinations {
-  background: var(--dark);
+  background: var(--dark, #080808);
+  padding: 5.5rem 0;
 }
 
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-tag {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--pink, #FF007F);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--text, #f5f0eb);
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--muted, rgba(245, 240, 235, 0.55));
+  font-size: 0.97rem;
+  max-width: 520px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Destination Grid */
 .dest-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 240px;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .dest-card {
-  border-radius: var(--radius-md);
+  border-radius: 14px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   transition: transform 0.4s ease;
+  aspect-ratio: 1 / 1;
 }
 .dest-card:hover {
   transform: scale(1.02);
@@ -616,13 +655,14 @@ body {
 }
 
 .dest-large {
-  grid-column: span 1;
+  grid-column: span 2;
   grid-row: span 2;
+  aspect-ratio: auto;
 }
 
 .dest-more {
-  background: var(--dark3);
-  border: 1px dashed var(--border-pink);
+  background: var(--dark3, #181818);
+  border: 1px dashed var(--border-pink, rgba(255, 0, 127, 0.25));
 }
 
 .dest-bg {
@@ -636,18 +676,27 @@ body {
   transform: scale(1.06);
 }
 
-/* Destination gradients - Kerala & South India */
-.dest-varkala {
-  background: linear-gradient(145deg, #1a4a6e 0%, #0e2a4a 100%);
+/* Destination Background Gradients */
+.dest-dadeli {
+  background: linear-gradient(145deg, #1a5a6e 0%, #0e3a4a 100%);
 }
-.dest-munnar {
-  background: linear-gradient(145deg, #0a3a2a 0%, #064020 100%);
+.dest-gokarna {
+  background: linear-gradient(145deg, #1a4a5e 0%, #0a2a3a 100%);
 }
-.dest-vagamon {
+.dest-goa {
+  background: linear-gradient(145deg, #2a7a6e 0%, #1a4a3a 100%);
+}
+.dest-chikmagalur {
   background: linear-gradient(145deg, #2a5a3a 0%, #1a3a28 100%);
 }
-.dest-ooty {
-  background: linear-gradient(145deg, #1a4030 0%, #0a2a1e 100%);
+.dest-mysuru {
+  background: linear-gradient(145deg, #8a6a3a 0%, #5a3a1a 100%);
+}
+.dest-coorg {
+  background: linear-gradient(145deg, #1a6a4a 0%, #0a3a28 100%);
+}
+.dest-bangalore {
+  background: linear-gradient(145deg, #4a3a6e 0%, #2a1a4a 100%);
 }
 
 .dest-overlay {
@@ -681,7 +730,7 @@ body {
 }
 .dest-tag {
   font-size: 0.72rem;
-  color: var(--pink-light);
+  color: #ff4da6;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
@@ -692,7 +741,45 @@ body {
   text-align: center;
 }
 .dest-more .dest-name {
-  color: var(--text);
+  color: var(--text, #f5f0eb);
+}
+
+/* Animation */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dest-large {
+    grid-column: span 2;
+    grid-row: span 1;
+    aspect-ratio: 1 / 0.8;
+  }
+}
+
+@media (max-width: 600px) {
+  .destinations {
+    padding: 4rem 0;
+  }
+  .dest-grid {
+    grid-template-columns: 1fr;
+  }
+  .dest-large {
+    grid-column: span 1;
+  }
+  .dest-card {
+    aspect-ratio: 1 / 0.7;
+  }
 }
 
 /* Why Us */
